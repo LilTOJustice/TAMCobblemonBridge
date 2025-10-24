@@ -8,9 +8,5 @@ class OnPokeBattleVictoryEvent: MusicEvent() {
         override fun fromJson(json: JsonObject): MusicEvent {
             return OnPokeBattleVictoryEvent()
         }
-
-        override fun getTypeName(): String {
-            return "on_poke_battle_victory"
-        }
     }
 }

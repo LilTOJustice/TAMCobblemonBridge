@@ -2,7 +2,7 @@ package liltojustice.tamcobblemonbridge
 
 import net.fabricmc.api.ModInitializer
 
-class Tamcobblemonbridge : ModInitializer {
+class TamCobblemonBridge : ModInitializer {
 
     override fun onInitialize() {
     }

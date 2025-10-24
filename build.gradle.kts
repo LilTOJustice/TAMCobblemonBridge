@@ -57,7 +57,7 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
 
-    modImplementation(files("TrueAdaptiveMusic-1.2+1.20.1.jar", "Cobblemon-fabric-1.5.2+1.20.1.jar"))
+    modImplementation(files("TrueAdaptiveMusic-1.3+1.20.1.jar", "Cobblemon-fabric-1.5.2+1.20.1.jar"))
     implementation("org.reflections:reflections:0.10.2")
 }
 

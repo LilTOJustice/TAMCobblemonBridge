@@ -5,15 +5,15 @@
 
   "name": "TAMCobblemonBridge",
   "description": "Cobblemon bridge for TrueAdaptiveMusic",
-  "authors": [],
+  "authors": ["LilTOJustice"],
   "contact": {},
 
   "license": "GPL-3.0",
 
   "environment": "client",
   "entrypoints": {
-    "client": ["liltojustice.tamcobblemonbridge.client.TamcobblemonbridgeClient"],
-    "main": ["liltojustice.tamcobblemonbridge.Tamcobblemonbridge"]
+    "client": ["liltojustice.tamcobblemonbridge.client.TamCobblemonBridgeClient"],
+    "main": ["liltojustice.tamcobblemonbridge.TamCobblemonBridge"]
   },
 
   "mixins": [

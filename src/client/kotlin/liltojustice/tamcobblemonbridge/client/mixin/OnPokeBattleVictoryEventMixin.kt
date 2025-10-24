@@ -4,6 +4,7 @@ import com.cobblemon.mod.common.client.gui.battle.widgets.BattleMessagePane
 import com.cobblemon.mod.common.util.battleLang
 import liltojustice.tamcobblemonbridge.client.OnPokeBattleVictoryEvent
 import liltojustice.tamcobblemonbridge.client.getInternalString
+import liltojustice.trueadaptivemusic.client.TAMClient
 import liltojustice.trueadaptivemusic.client.trigger.event.MusicEvent
 import net.minecraft.client.MinecraftClient
 import org.spongepowered.asm.mixin.Mixin
@@ -21,7 +22,7 @@ class OnPokeBattleVictoryEventMixin {
             .string
 
         if (entry.line.getInternalString() == userWonString) {
-            MusicEvent.invokeMusicEvent(OnPokeBattleVictoryEvent.getTypeName())
+            MusicEvent.invokeMusicEvent(TAMClient.eventRegistry[OnPokeBattleVictoryEvent::class])
         }
     }
 }
