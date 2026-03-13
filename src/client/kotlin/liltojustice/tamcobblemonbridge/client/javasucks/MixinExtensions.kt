@@ -2,15 +2,13 @@ package liltojustice.tamcobblemonbridge.client.javasucks
 
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType
 import com.cobblemon.mod.common.client.CobblemonClient
-import com.cobblemon.mod.common.client.battle.ClientBattle
 import com.cobblemon.mod.common.client.gui.battle.widgets.BattleMessagePane.BattleMessageLine
 import com.cobblemon.mod.common.util.battleLang
 import liltojustice.tamcobblemonbridge.client.BattleType
 import liltojustice.tamcobblemonbridge.client.OnPokeBattleVictoryEvent
 import liltojustice.tamcobblemonbridge.client.PokeBattlePredicate.Companion.legendaries
 import liltojustice.tamcobblemonbridge.client.getInternalString
-import liltojustice.trueadaptivemusic.client.TAMClient.eventRegistry
-import liltojustice.trueadaptivemusic.client.trigger.event.MusicEvent
+import liltojustice.trueadaptivemusic.client.TAMClient
 import net.minecraft.client.MinecraftClient
 
 object MixinExtensions {
@@ -36,10 +34,7 @@ object MixinExtensions {
                 BattleType.Any
             }
 
-            MusicEvent.Companion.invokeMusicEvent(
-                eventRegistry[OnPokeBattleVictoryEvent::class],
-                battleType
-            )
+            TAMClient.invokeMusicEvent(OnPokeBattleVictoryEvent::class, battleType)
         }
     }
 }

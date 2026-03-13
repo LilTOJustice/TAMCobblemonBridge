@@ -46,6 +46,9 @@ repositories {
     // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
     // See https://docs.gradle.org/current/userguide/declaring_repositories.html
     // for more information about repositories.
+    maven {
+        url = uri("https://cursemaven.com")
+    }
 }
 
 dependencies {
@@ -57,7 +60,8 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
 
-    modImplementation(files("TrueAdaptiveMusic-1.3+1.21.1.jar", "Abes-Hutts-Cobblemon-1.21.1-1.7.1-1.0.1.jar"))
+    modImplementation("curse.maven:true-adaptive-music-1208639:7741802")
+    modImplementation("curse.maven:cobblemon-687131:7553235")
     implementation("org.reflections:reflections:0.10.2")
 }
 

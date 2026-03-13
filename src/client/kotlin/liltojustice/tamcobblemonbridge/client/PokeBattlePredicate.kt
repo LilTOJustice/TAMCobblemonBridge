@@ -2,15 +2,12 @@ package liltojustice.tamcobblemonbridge.client
 
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType
 import com.cobblemon.mod.common.client.CobblemonClient
-import com.google.gson.JsonObject
 import liltojustice.trueadaptivemusic.client.trigger.predicate.MusicPredicate
-import net.minecraft.client.MinecraftClient
-import net.minecraft.util.JsonHelper
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
 class PokeBattlePredicate(private val battleType: BattleType): MusicPredicate() {
-    override fun test(client: MinecraftClient): Boolean {
+    override fun test(): Boolean {
         return CobblemonClient.battle?.let {
             val enemySide = it.side2
 
@@ -25,23 +22,11 @@ class PokeBattlePredicate(private val battleType: BattleType): MusicPredicate() 
         } ?: false
     }
 
-    override fun toJson(): JsonObject {
-        val result = super.toJson()
-        result.addProperty("battleType", battleType.toString())
-
-        return result
-    }
-
-    companion object: MusicPredicateCompanion<PokeBattlePredicate> {
+    companion object {
         var legendaries = BufferedReader(
             InputStreamReader(
                 this::class.java.getClassLoader()
                     .getResourceAsStream("assets/legendaries")!!, "UTF-8")
         ).use { reader -> reader.readLines().toSet() }
-
-        override fun fromJson(json: JsonObject): MusicPredicate {
-            return PokeBattlePredicate(
-                BattleType.valueOf(JsonHelper.getString(json, "battleType")))
-        }
     }
 }
