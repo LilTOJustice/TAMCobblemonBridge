@@ -56,5 +56,5 @@ jobs:
           version: "${{env.MINECRAFT_VERSION}}"
           version-type: release
 
-          game-versions: "${{env.MINECRAFT_VERSION}}"
+          game-versions: ">=${{env.MINECRAFT_VERSION}}"
           java: "${{env.JAVA_VERSION}}"
