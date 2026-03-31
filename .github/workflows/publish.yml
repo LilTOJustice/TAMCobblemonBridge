@@ -41,9 +41,6 @@ jobs:
         run: ./gradlew clean build
 
       - name: Publish (CurseForge/Modrinth)
-        env:
-          MINECRAFT_VERSION: ${{needs.determine-versions.outputs.minecraft_version}}
-          MOD_VERSION: ${{needs.determine-versions.outputs.mod_version}}
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           curseforge-id: "${{env.CURSEFORGE_ID}}"
@@ -56,5 +53,6 @@ jobs:
           version: "${{env.MINECRAFT_VERSION}}"
           version-type: release
 
-          game-versions: ">=${{env.MINECRAFT_VERSION}}"
+          game-versions: |
+            >=${{env.MINECRAFT_VERSION}}
           java: "${{env.JAVA_VERSION}}"
