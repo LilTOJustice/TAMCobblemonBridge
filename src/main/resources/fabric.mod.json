@@ -24,6 +24,6 @@
     "fabric": "*",
     "minecraft": "*",
     "cobblemon": "*",
-    "trueadaptivemusic": "*"
+    "trueadaptivemusicapi": "1.1.2"
   }
 }

@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "2.1.20"
-    id("fabric-loom") version "1.10-SNAPSHOT"
+    kotlin("jvm") version "2.3.0"
+    id("fabric-loom") version "1.15-SNAPSHOT"
     id("maven-publish")
 }
 
@@ -60,9 +60,8 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
 
-    modImplementation("curse.maven:true-adaptive-music-1208639:7741802")
+    modImplementation("curse.maven:trueadaptivemusicapi-1514598:8020354")
     modImplementation("curse.maven:cobblemon-687131:7553235")
-    implementation("org.reflections:reflections:0.10.2")
 }
 
 tasks.processResources {
@@ -73,9 +72,10 @@ tasks.processResources {
 
     filesMatching("fabric.mod.json") {
         expand("version" to project.version,
-            "minecraft_version" to project.property("minecraft_version"),
-            "loader_version" to project.property("loader_version"),
-            "kotlin_loader_version" to project.property("kotlin_loader_version"))
+            "minecraft_version" to project.property("minecraft_version")!!,
+            "loader_version" to project.property("loader_version")!!,
+            "kotlin_loader_version" to project.property("kotlin_loader_version")!!
+        )
     }
 }
 

@@ -5,10 +5,10 @@ import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.gui.battle.widgets.BattleMessagePane.BattleMessageLine
 import com.cobblemon.mod.common.util.battleLang
 import liltojustice.tamcobblemonbridge.client.BattleType
+import liltojustice.tamcobblemonbridge.client.Constants
 import liltojustice.tamcobblemonbridge.client.OnPokeBattleVictoryEvent
-import liltojustice.tamcobblemonbridge.client.PokeBattlePredicate.Companion.legendaries
 import liltojustice.tamcobblemonbridge.client.getInternalString
-import liltojustice.trueadaptivemusic.client.TAMClient
+import liltojustice.trueadaptivemusicapi.TAMAPI
 import net.minecraft.client.MinecraftClient
 
 object MixinExtensions {
@@ -27,14 +27,17 @@ object MixinExtensions {
             }
             else if (enemySide.actors.any { actor ->
                     actor.activePokemon.any { pokemon ->
-                        legendaries.contains(pokemon.battlePokemon?.displayName?.string) } }) {
+                        Constants.legendaries.contains(pokemon.battlePokemon?.displayName?.string)
+                    }
+            }) {
                 BattleType.Legendary
             }
             else {
                 BattleType.Any
             }
 
-            TAMClient.invokeMusicEvent(OnPokeBattleVictoryEvent::class, battleType)
+            TAMAPI.invokeEvent(
+                OnPokeBattleVictoryEvent, OnPokeBattleVictoryEvent.Input(battleType))
         }
     }
 }

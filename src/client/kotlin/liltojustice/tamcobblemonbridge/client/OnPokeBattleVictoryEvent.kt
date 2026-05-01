@@ -1,11 +1,18 @@
 package liltojustice.tamcobblemonbridge.client
 
-import liltojustice.trueadaptivemusic.client.trigger.event.MusicEvent
+import liltojustice.trueadaptivemusicapi.trigger.arguments.TriggerArguments
+import liltojustice.trueadaptivemusicapi.trigger.event.input.EventInput
+import liltojustice.trueadaptivemusicapi.trigger.event.type.StaticEventType
+import kotlin.reflect.typeOf
 
-class OnPokeBattleVictoryEvent(private val battleType: BattleType): MusicEvent() {
-    override fun validate(vararg eventArgs: Any?): Boolean {
-        val battleType = eventArgs[0] as? BattleType ?: return false
+object OnPokeBattleVictoryEvent
+    : StaticEventType<OnPokeBattleVictoryEvent.Arguments, OnPokeBattleVictoryEvent.Input>(
+    "on_poke_battle_victory", typeOf<Arguments>()
+) {
+    data class Arguments(val battleType: BattleType): TriggerArguments()
+    data class Input(val battleType: BattleType): EventInput()
 
-        return this.battleType == BattleType.Any || this.battleType == battleType
+    override fun validate(arguments: Arguments, input: Input): Boolean {
+        return arguments.battleType == BattleType.Any || arguments.battleType == input.battleType
     }
 }
