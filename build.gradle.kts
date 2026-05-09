@@ -60,7 +60,7 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
 
-    modImplementation("curse.maven:trueadaptivemusicapi-1514598:8020354")
+    modImplementation("curse.maven:trueadaptivemusicapi-1514598:8051437")
     modImplementation("curse.maven:cobblemon-687131:7553235")
 }
 
