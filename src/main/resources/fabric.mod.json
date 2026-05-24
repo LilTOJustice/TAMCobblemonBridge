@@ -16,6 +16,7 @@
   },
 
   "mixins": [
+    "tamcobblemonbridge.client.mixins.json"
   ],
 
   "depends": {
