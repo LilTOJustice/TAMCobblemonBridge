@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = BattleMessagePane.class, remap = false)
-abstract class OnPokeBattleVictoryEventMixin extends AlwaysSelectedEntryListWidget<BattleMessagePane.BattleMessageLine> {
-    public OnPokeBattleVictoryEventMixin(MinecraftClient minecraftClient, int i, int j, int k, int l) {
+abstract class BattleMessagePaneMixin extends AlwaysSelectedEntryListWidget<BattleMessagePane.BattleMessageLine> {
+    public BattleMessagePaneMixin(MinecraftClient minecraftClient, int i, int j, int k, int l) {
         super(minecraftClient, i, j, k, l);
     }
 

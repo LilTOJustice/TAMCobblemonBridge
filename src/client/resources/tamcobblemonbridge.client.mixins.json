@@ -4,7 +4,7 @@
   "package": "liltojustice.tamcobblemonbridge.client.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
-    "OnPokeBattleVictoryEventMixin"
+    "BattleMessagePaneMixin"
   ],
   "injectors": {
     "defaultRequire": 1

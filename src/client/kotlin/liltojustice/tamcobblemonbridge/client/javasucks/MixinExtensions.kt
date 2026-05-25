@@ -4,6 +4,7 @@ import com.cobblemon.mod.common.api.battles.model.actor.ActorType
 import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.client.gui.battle.widgets.BattleMessagePane.BattleMessageLine
 import com.cobblemon.mod.common.util.battleLang
+import com.cobblemon.mod.common.util.lang
 import liltojustice.tamcobblemonbridge.client.BattleType
 import liltojustice.tamcobblemonbridge.client.Constants
 import liltojustice.tamcobblemonbridge.client.OnPokeBattleVictoryEvent
@@ -15,8 +16,10 @@ object MixinExtensions {
     fun addEntry(entry: BattleMessageLine) {
         val player = MinecraftClient.getInstance().player ?: return
         val userWonString = battleLang("win", player.displayName ?: "").string
+        val caughtString = lang("capture.succeeded", "").string.dropLast(1)
+        val internalString = entry.line.getInternalString()
 
-        if (entry.line.getInternalString() == userWonString) {
+        if (internalString == userWonString || internalString.startsWith(caughtString)) {
             val enemySide = CobblemonClient.battle?.side2 ?: return
 
             val battleType = if (enemySide.actors.all { actor -> actor.type == ActorType.WILD }) {
