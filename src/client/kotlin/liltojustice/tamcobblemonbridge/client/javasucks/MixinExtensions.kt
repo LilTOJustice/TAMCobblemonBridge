@@ -22,7 +22,7 @@ object MixinExtensions {
             val battleType = if (enemySide.actors.all { actor -> actor.type == ActorType.WILD }) {
                 BattleType.Wild
             }
-            else if (enemySide.actors.all { actor -> actor.type == ActorType.NPC }) {
+            else if (enemySide.actors.all { actor -> actor.type == ActorType.NPC || actor.type == ActorType.PLAYER }) {
                 BattleType.Trainer
             }
             else if (enemySide.actors.any { actor ->

@@ -17,7 +17,9 @@ object PokeBattlePredicate
             when (arguments.battleType) {
                 BattleType.Any -> true
                 BattleType.Wild -> enemySide.actors.all { actor -> actor.type == ActorType.WILD }
-                BattleType.Trainer -> enemySide.actors.all { actor -> actor.type == ActorType.NPC }
+                BattleType.Trainer -> enemySide.actors.all { actor ->
+                    actor.type == ActorType.NPC || actor.type == ActorType.PLAYER
+                }
                 BattleType.Legendary -> enemySide.actors.any { actor ->
                     actor.activePokemon.any { pokemon ->
                         Constants.legendaries.contains(pokemon.battlePokemon?.displayName?.string)
