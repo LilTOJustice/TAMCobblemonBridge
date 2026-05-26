@@ -20,6 +20,7 @@ object PokeBattlePredicate
                 BattleType.Trainer -> enemySide.actors.all { actor ->
                     actor.type == ActorType.NPC || actor.type == ActorType.PLAYER
                 }
+                BattleType.Player -> enemySide.actors.all { actor -> actor.type == ActorType.PLAYER }
                 BattleType.Legendary -> enemySide.actors.any { actor ->
                     actor.activePokemon.any { pokemon ->
                         Constants.legendaries.contains(pokemon.battlePokemon?.displayName?.string)

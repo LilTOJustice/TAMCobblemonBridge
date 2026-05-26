@@ -22,18 +22,21 @@ object MixinExtensions {
         if (internalString == userWonString || internalString.startsWith(caughtString)) {
             val enemySide = CobblemonClient.battle?.side2 ?: return
 
-            val battleType = if (enemySide.actors.all { actor -> actor.type == ActorType.WILD }) {
-                BattleType.Wild
-            }
-            else if (enemySide.actors.all { actor -> actor.type == ActorType.NPC || actor.type == ActorType.PLAYER }) {
-                BattleType.Trainer
-            }
-            else if (enemySide.actors.any { actor ->
+            val battleType = if (enemySide.actors.any { actor ->
                     actor.activePokemon.any { pokemon ->
                         Constants.legendaries.contains(pokemon.battlePokemon?.displayName?.string)
                     }
-            }) {
+                }) {
                 BattleType.Legendary
+            }
+            else if (enemySide.actors.all { actor -> actor.type == ActorType.WILD }) {
+                BattleType.Wild
+            }
+            else if (enemySide.actors.all { actor -> actor.type == ActorType.PLAYER }) {
+                BattleType.Player
+            }
+            else if (enemySide.actors.all { actor -> actor.type == ActorType.NPC || actor.type == ActorType.PLAYER }) {
+                BattleType.Trainer
             }
             else {
                 BattleType.Any
