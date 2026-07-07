@@ -12,7 +12,9 @@
 
   "environment": "client",
   "entrypoints": {
-    "client": ["liltojustice.tamcobblemonbridge.client.TamCobblemonBridgeClient"]
+    "client": [
+      "liltojustice.tamcobblemonbridge.client.TAMCobblemonBridgeClient"
+    ]
   },
 
   "mixins": [
