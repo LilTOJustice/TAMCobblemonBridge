@@ -15,7 +15,7 @@ import net.minecraft.client.MinecraftClient
 object MixinExtensions {
     fun addEntry(entry: BattleMessageLine) {
         val player = MinecraftClient.getInstance().player ?: return
-        val userWonString = battleLang("win", player.displayName ?: "").string
+        val userWonString = battleLang("win", player.nameForScoreboard ?: "").string
         val caughtString = lang("capture.succeeded", "").string.dropLast(1)
         val internalString = entry.line.getInternalString()
 
