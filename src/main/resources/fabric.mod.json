@@ -2,31 +2,26 @@
   "schemaVersion": 1,
   "id": "tamcobblemonbridge",
   "version": "${version}",
-
   "name": "TAMCobblemonBridge",
   "description": "Cobblemon bridge for TrueAdaptiveMusic",
   "authors": ["LilTOJustice"],
   "contact": {},
-
   "license": "GPL-3.0",
-
   "environment": "client",
   "entrypoints": {
     "client": [
       "liltojustice.tamcobblemonbridge.client.TAMCobblemonBridgeClient"
     ]
   },
-
   "mixins": [
     "tamcobblemonbridge.client.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric-language-kotlin": ">=${kotlin_loader_version}",
     "fabric": "*",
     "minecraft": "*",
     "cobblemon": "*",
-    "trueadaptivemusicapi": "1.2.*"
+    "trueadaptivemusicapi": "1.3.*"
   }
 }
